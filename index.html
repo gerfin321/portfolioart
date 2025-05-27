@@ -1,73 +1,98 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Art Portfolio & Commission Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artist Commissions</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>🎉 Commissions OPEN! 🎨</h1>
-    <p class="subtitle">Welcome to my portfolio! Scroll down for commission prices and calculator.</p>
+  <header class="banner">
+    🎉 Commissions OPEN! 🎨
   </header>
-  <section id="portfolio">
-    <h2>My Works</h2>
-    <div class="gallery">
-      <div class="art-card">
-        <img src="portart1.jpg" alt="Artwork 1">
-        <span class="art-title">Example</span>
+
+  <section class="info">
+    <ul class="pricing-info">
+      <li>Head – $5</li>
+      <li>Halfbody – $7</li>
+      <li>Fullbody – $10</li>
+    </ul>
+    <p>Base price +</p>
+    <ul class="extras-list">
+      <li>👥 +80% per extra character</li>
+      <li>🖼️ Background – $0–$9</li>
+      <li>🔞 NSFW – +20% (mild) / +40% (explicit)</li>
+      <li>⚡ Express – +50%</li>
+      <li>💼 Commercial – +100%</li>
+    </ul>
+    <p>Average waiting time – 1 week; Express – 1 day</p>
+  </section>
+
+  <section id="calculator">
+    <h2>Price Calculator</h2>
+    <form>
+      <label>
+        Choose artwork type:
+        <select id="type">
+          <option value="5">Head ($5)</option>
+          <option value="7">Halfbody ($7)</option>
+          <option value="10">Fullbody ($10)</option>
+        </select>
+      </label>
+
+      <label>
+        Extra characters:
+        <input type="number" id="extraChars" value="0" min="0">
+      </label>
+
+      <label>
+        Background price ($0–9):
+        <input type="number" id="bgPrice" value="0" min="0" max="9">
+      </label>
+
+      <label>
+        NSFW level:
+        <select id="nsfw">
+          <option value="0">None</option>
+          <option value="0.2">Mild (+20%)</option>
+          <option value="0.4">Explicit (+40%)</option>
+        </select>
+      </label>
+
+      <label>
+        <input type="checkbox" id="express">
+        Express (+50%)
+      </label>
+
+      <label>
+        <input type="checkbox" id="commercial">
+        Commercial use (+100%)
+      </label>
+
+      <div class="result">
+        Total: <span id="price">$0.00</span>
       </div>
-      <div class="art-card">
-        <img src="portart2.jpg" alt="Artwork 2">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart3.jpg" alt="Artwork 3">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart4.jpg" alt="Artwork 4">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart5.jpg" alt="Artwork 5">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart6.jpg" alt="Artwork 6">
-        <span class="art-title">Example</span>
-      </div>
+    </form>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <img src="images/art1.jpg" alt="Art 1" class="gallery-item">
+      <img src="images/art2.jpg" alt="Art 2" class="gallery-item">
+      <img src="images/art3.jpg" alt="Art 3" class="gallery-item">
+      <img src="images/art4.jpg" alt="Art 4" class="gallery-item">
+      <img src="images/art5.jpg" alt="Art 5" class="gallery-item">
+      <img src="images/art6.jpg" alt="Art 6" class="gallery-item">
     </div>
 
-    <!-- Slider Gallery 3x2 -->
-    <div class="slider-gallery">
-      <button class="slider-btn prev">&#10094;</button>
-      <div class="slides-wrapper">
-        <div class="slides"></div>
-      </div>
-      <button class="slider-btn next">&#10095;</button>
+    <div class="modal" id="modal">
+      <span class="close" id="modalClose">&times;</span>
+      <img class="modal-img" id="modalImg" alt="Expanded artwork">
     </div>
   </section>
-  <section id="calculator">
-    <h2>Commission Price Calculator</h2>
-    <form id="commission-form" autocomplete="off">
-      <!-- ... existing form ... -->
-    </form>
-    <p class="info">🚄 Average waiting time - 1 week, express - 1 day</p>
-  </section>
-  <footer>
-    <p>&copy; 2025 Your Name | Portfolio & Commission</p>
-  </footer>
-  <div id="tooltip" style="display:none;"></div>
-  <div id="lightbox" class="lightbox" style="display:none;">
-    <div class="lightbox-bg"></div>
-    <div class="lightbox-content">
-      <img src="" alt="Zoomed Art" id="lightbox-img">
-      <span class="lightbox-title" id="lightbox-title"></span>
-      <button class="lightbox-close" id="lightbox-close" title="Close">&times;</button>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
