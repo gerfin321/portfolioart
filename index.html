@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,38 +12,15 @@
     <h1>🎉 Commissions OPEN! 🎨</h1>
     <p class="subtitle">Welcome to my portfolio! Scroll down for commission prices and calculator.</p>
   </header>
+
   <section id="portfolio">
-    <h2>My Works</h2>
-    <div class="gallery">
-      <div class="art-card">
-        <img src="portart1.jpg" alt="Artwork 1">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart2.jpg" alt="Artwork 2">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart3.jpg" alt="Artwork 3">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart4.jpg" alt="Artwork 4">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart5.jpg" alt="Artwork 5">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart6.jpg" alt="Artwork 6">
-        <span class="art-title">Example</span>
-      </div>
-    </div>
+    <!-- ... ваш галерея ... -->
   </section>
+
   <section id="calculator">
     <h2>Commission Price Calculator</h2>
     <form id="commission-form" autocomplete="off">
+
       <div class="input-group">
         <label for="type">Type:
           <button type="button" class="help-btn" data-tooltip="Choose what you want drawn: Head (portrait), Halfbody (to waist), or Fullbody.">
@@ -55,6 +33,7 @@
           <option value="fullbody">Fullbody - $9</option>
         </select>
       </div>
+
       <div class="input-group">
         <label for="characters">Characters:
           <button type="button" class="help-btn" data-tooltip="More than one character? Each extra +80% of the base price.">
@@ -63,14 +42,9 @@
         </label>
         <input type="number" id="characters" name="characters" min="1" value="1">
       </div>
-      <div class="input-group">
-        <label for="arts">Number of Arts:
-          <button type="button" class="help-btn" data-tooltip="If you want multiple artworks in one order, each next art is +80% of the price.">
-            ?
-          </button>
-        </label>
-        <input type="number" id="arts" name="arts" min="1" value="1">
-      </div>
+
+      <!-- Удалён блок Number of Arts -->
+
       <div class="input-group">
         <label for="bg">Background:
           <button type="button" class="help-btn" data-tooltip="How detailed you want the background. No BG = transparent or flat color.">
@@ -84,6 +58,7 @@
           <option value="9">Complex ($9)</option>
         </select>
       </div>
+
       <div class="input-group">
         <label for="nsfw">NSFW:
           <button type="button" class="help-btn" data-tooltip="20%: Mildly suggestive | 40%: Fully explicit">
@@ -96,6 +71,7 @@
           <option value="0.4">NSFW +40%</option>
         </select>
       </div>
+
       <div class="input-group checkbox-group">
         <label>
           <input type="checkbox" id="express" name="express">
@@ -108,31 +84,27 @@
           <button type="button" class="help-btn" data-tooltip="Using the art for business or monetization? +100% to base price.">?</button>
         </label>
       </div>
+
       <div id="result">
         <h3>Total Price: <span id="total">$0</span></h3>
         <div id="time"></div>
       </div>
-      <div class="input-group">
-        <label for="request">Order details (copy and send me with your references!):
-          <button type="button" class="help-btn" data-tooltip="Describe your order here! Example: 'Fullbody, 2 characters, battle pose, detailed BG, express.'">?</button>
-        </label>
-        <textarea id="request" name="request" placeholder="Describe your commission, attach refs when messaging me."></textarea>
-      </div>
+
+      <!-- Удалён блок Order details / textarea -->
+
     </form>
     <p class="info">🚄 Average waiting time - 1 week, express - 1 day</p>
   </section>
+
   <footer>
-    <p>&copy; 2025 gerfin/GHXARTS | Portfolio & Commission</p>
+    <p>&copy; 2025 Your Name | Portfolio & Commission</p>
   </footer>
+
   <div id="tooltip" style="display:none;"></div>
   <div id="lightbox" class="lightbox" style="display:none;">
-    <div class="lightbox-bg"></div>
-    <div class="lightbox-content">
-      <img src="" alt="Zoomed Art" id="lightbox-img">
-      <span class="lightbox-title" id="lightbox-title"></span>
-      <button class="lightbox-close" id="lightbox-close" title="Close">&times;</button>
-    </div>
+    <!-- ... lightbox ... -->
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
