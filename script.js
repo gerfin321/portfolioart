@@ -22,10 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   [typeEl, extraCharsEl, bgPriceEl, nsfwEl, expressEl, commercialEl]
     .forEach(el => el.addEventListener('input', calculatePrice));
 
-  // Initialize
   calculatePrice();
 
-  // Gallery modal
+  // Галерея
   const galleryItems = document.querySelectorAll('.gallery-item');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -38,13 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  modalClose.addEventListener('click', () => {
+  function closeModal() {
     modal.style.display = 'none';
-  });
+  }
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
   });
 });
