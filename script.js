@@ -1,76 +1,64 @@
-function calc() {
-  const basePrices = { head: 5, halfbody: 7, fullbody: 9 };
-  const type = document.getElementById('type').value;
-  const basePrice = basePrices[type];
-  let characters = parseInt(document.getElementById('characters').value) || 1;
-  let arts = parseInt(document.getElementById('arts').value) || 1;
-  let bg = parseFloat(document.getElementById('bg').value) || 0;
-  let nsfw = parseFloat(document.getElementById('nsfw').value) || 0;
-  let express = document.getElementById('express').checked;
-  let commercial = document.getElementById('commercial').checked;
-  let pricePerArt = basePrice;
-  if (characters > 1) pricePerArt += basePrice * 0.8 * (characters - 1);
-  pricePerArt += basePrice * nsfw;
-  pricePerArt += bg;
-  if (express) pricePerArt += basePrice * 0.5;
-  if (commercial) pricePerArt += basePrice * 1.0;
-  let total = pricePerArt;
-  for (let i = 2; i <= arts; i++) total += pricePerArt * 0.8;
-  total = Math.round(total * 100) / 100;
-  document.getElementById('total').textContent = '$' + total;
-  const timeDiv = document.getElementById('time');
-  if (express) {
-    timeDiv.innerHTML = "⏱️ <span style='color:var(--accent);'>Express: 1 day</span>";
-  } else {
-    timeDiv.innerHTML = "🕒 <span>Average waiting time: 1 week</span>";
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ----- Лайтбокс -----
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbTitle = document.getElementById('lightbox-title');
+  const lbClose = document.getElementById('lightbox-close');
+  document.querySelectorAll('.art-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      lbImg.src = img.src;
+      lbTitle.textContent = card.querySelector('.art-title').textContent;
+      lightbox.style.display = 'flex';
+    });
+  });
+  lbClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
+  });
+
+  // ----- Слайдер 3×2 -----
+  const galleryCards = Array.from(document.querySelectorAll('.gallery .art-card'));
+  const slidesContainer = document.querySelector('.slides');
+  const perSlide = 6; // 3×2
+  let index = 0;
+
+  // разбиваем на страницы
+  for (let i = 0; i < galleryCards.length; i += perSlide) {
+    const slide = document.createElement('div');
+    slide.classList.add('slide');
+    galleryCards.slice(i, i + perSlide).forEach(card => {
+      // клонируем карточку
+      slide.appendChild(card.cloneNode(true));
+    });
+    slidesContainer.appendChild(slide);
   }
-}
-['type','characters','arts','bg','nsfw','express','commercial'].forEach(id => {
-  document.getElementById(id).addEventListener('input', calc);
-  document.getElementById(id).addEventListener('change', calc);
-});
-calc();
-const tooltip = document.getElementById('tooltip');
-document.querySelectorAll('.help-btn').forEach(btn => {
-  btn.addEventListener('mouseenter', e => {
-    tooltip.innerHTML = btn.getAttribute('data-tooltip');
-    tooltip.style.display = 'block';
-    positionTooltip(e);
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+
+  // кнопки
+  document.querySelector('.slider-btn.prev').addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    updateSlider();
   });
-  btn.addEventListener('mousemove', e => positionTooltip(e));
-  btn.addEventListener('mouseleave', () => {
-    tooltip.style.display = 'none';
+  document.querySelector('.slider-btn.next').addEventListener('click', () => {
+    index = (index + 1) % total;
+    updateSlider();
   });
-});
-function positionTooltip(e) {
-  const pad = 12;
-  let x = e.clientX + pad;
-  let y = e.clientY + pad;
-  if (window.innerWidth - x < 260) x = window.innerWidth - 260 - pad;
-  tooltip.style.left = x + 'px';
-  tooltip.style.top = y + 'px';
-}
-const artCards = document.querySelectorAll('.art-card img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxTitle = document.getElementById('lightbox-title');
-const lightboxClose = document.getElementById('lightbox-close');
-artCards.forEach(cardImg => {
-  cardImg.addEventListener('click', () => {
-    lightboxImg.src = cardImg.src;
-    let title = cardImg.parentNode.querySelector('.art-title');
-    lightboxTitle.textContent = title ? title.textContent : '';
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  });
-});
-function closeLightbox() {
-  lightbox.style.display = 'none';
-  document.body.style.overflow = '';
-  lightboxImg.src = '';
-}
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.querySelector('.lightbox-bg').addEventListener('click', closeLightbox);
-document.addEventListener('keydown', e => {
-  if (lightbox.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) closeLightbox();
+
+  function updateSlider() {
+    const width = slidesContainer.parentElement.offsetWidth;
+    slidesContainer.style.transform = `translateX(-${index * width}px)`;
+  }
+
+  // инициализация
+  if (total > 0) {
+    updateSlider();
+  } else {
+    document.querySelectorAll('.slider-btn').forEach(b => b.style.display = 'none');
+  }
 });
