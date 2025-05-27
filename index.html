@@ -14,9 +14,36 @@
   </header>
 
   <section id="portfolio">
-    <!-- ... ваш галерея ... -->
+    <h2>My Works</h2>
+    <div class="gallery">
+      <div class="art-card">
+        <img src="portart1.jpg" alt="Artwork 1">
+        <span class="art-title">Example</span>
+      </div>
+      <div class="art-card">
+        <img src="portart2.jpg" alt="Artwork 2">
+        <span class="art-title">Example</span>
+      </div>
+      <div class="art-card">
+        <img src="portart3.jpg" alt="Artwork 3">
+        <span class="art-title">Example</span>
+      </div>
+      <div class="art-card">
+        <img src="portart4.jpg" alt="Artwork 4">
+        <span class="art-title">Example</span>
+      </div>
+      <div class="art-card">
+        <img src="portart5.jpg" alt="Artwork 5">
+        <span class="art-title">Example</span>
+      </div>
+      <div class="art-card">
+        <img src="portart6.jpg" alt="Artwork 6">
+        <span class="art-title">Example</span>
+      </div>
+    </div>
   </section>
-
+  
+  <!-- Calculator -->
   <section id="calculator">
     <h2>Commission Price Calculator</h2>
     <form id="commission-form" autocomplete="off">
@@ -43,8 +70,6 @@
         <input type="number" id="characters" name="characters" min="1" value="1">
       </div>
 
-      <!-- Удалён блок Number of Arts -->
-
       <div class="input-group">
         <label for="bg">Background:
           <button type="button" class="help-btn" data-tooltip="How detailed you want the background. No BG = transparent or flat color.">
@@ -61,14 +86,14 @@
 
       <div class="input-group">
         <label for="nsfw">NSFW:
-          <button type="button" class="help-btn" data-tooltip="20%: Mildly suggestive | 40%: Fully explicit">
+          <button type="button" class="help-btn" data-tooltip="20% mild suggestive content or 40% explicit content">
             ?
           </button>
         </label>
         <select id="nsfw" name="nsfw">
-          <option value="0">No</option>
-          <option value="0.2">NSFW +20%</option>
-          <option value="0.4">NSFW +40%</option>
+          <option value="0">No NSFW</option>
+          <option value="0.2">Mild (+20%)</option>
+          <option value="0.4">Explicit (+40%)</option>
         </select>
       </div>
 
@@ -90,8 +115,6 @@
         <div id="time"></div>
       </div>
 
-      <!-- Удалён блок Order details / textarea -->
-
     </form>
     <p class="info">🚄 Average waiting time - 1 week, express - 1 day</p>
   </section>
@@ -104,7 +127,3 @@
   <div id="lightbox" class="lightbox" style="display:none;">
     <!-- ... lightbox ... -->
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
