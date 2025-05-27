@@ -5,6 +5,7 @@
   --bg-color: #f5f5f5;
   --text-color: #2d3436;
   --modal-bg: rgba(0, 0, 0, 0.9);
+  --transition: 0.3s ease;
 }
 
 * {
@@ -14,10 +15,10 @@
 }
 
 body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
-  line-height: 1.5;
+  line-height: 1.6;
   padding: 1rem;
 }
 
@@ -25,9 +26,10 @@ body {
   background: var(--primary-color);
   color: #fff;
   text-align: center;
-  padding: 1rem;
-  font-size: 1.5rem;
-  animation: slideDown 0.5s ease-out;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  animation: slideDown 0.6s ease-out;
 }
 
 @keyframes slideDown {
@@ -35,58 +37,104 @@ body {
   to { transform: translateY(0); }
 }
 
-section {
-  margin: 2rem 0;
+/* Двухколоночный макет */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
 }
 
-.pricing-info,
-.extras-list {
+.info, .calculator {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.pricing-info, .extras-list {
   list-style: none;
+  margin-bottom: 1rem;
+}
+
+.pricing-info li, .extras-list li {
   margin: 0.5rem 0;
 }
 
-.pricing-info li,
-.extras-list li {
-  margin: 0.25rem 0;
+.timing {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-#calculator form {
+.calculator form {
   display: grid;
   gap: 1rem;
-  max-width: 400px;
-  margin: auto;
 }
 
-#calculator label {
+.calculator label {
   display: flex;
   flex-direction: column;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-#calculator select,
-#calculator input[type="number"] {
-  padding: 0.5rem;
+.calculator select,
+.calculator input[type="number"] {
+  padding: 0.6rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-#calculator input[type="checkbox"] {
+.calculator input:focus,
+.calculator select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px rgba(0, 184, 148, 0.3);
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+}
+
+.checkbox input {
   margin-right: 0.5rem;
+  transform: scale(1.1);
 }
 
 .result {
   text-align: center;
-  font-size: 1.25rem;
-  padding: 0.5rem;
-  background: #fff;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  background: #f0f0f0;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.gallery {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+}
+
+.gallery h2 {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
   gap: 1rem;
 }
 
@@ -94,11 +142,12 @@ section {
   width: 100%;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .gallery-item:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .modal {
@@ -109,7 +158,7 @@ section {
   background: var(--modal-bg);
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .modal-img {
@@ -120,13 +169,25 @@ section {
 
 .close {
   position: absolute;
-  top: 1rem; right: 1rem;
-  font-size: 2rem;
+  top: 1.2rem; right: 1.2rem;
+  font-size: 2.2rem;
   color: #fff;
   cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.close:hover {
+  transform: scale(1.2);
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Общая анимация появления */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+  animation-delay: 0.4s;
 }
