@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Artist Commissions</title>
+  <!-- Подключаем Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,71 +14,73 @@
     🎉 Commissions OPEN! 🎨
   </header>
 
-  <section class="info">
-    <ul class="pricing-info">
-      <li>Head – $5</li>
-      <li>Halfbody – $7</li>
-      <li>Fullbody – $10</li>
-    </ul>
-    <p>Base price +</p>
-    <ul class="extras-list">
-      <li>👥 +80% per extra character</li>
-      <li>🖼️ Background – $0–$9</li>
-      <li>🔞 NSFW – +20% (mild) / +40% (explicit)</li>
-      <li>⚡ Express – +50%</li>
-      <li>💼 Commercial – +100%</li>
-    </ul>
-    <p>Average waiting time – 1 week; Express – 1 day</p>
-  </section>
+  <main class="container">
+    <section class="info animate-fade-in">
+      <ul class="pricing-info">
+        <li><strong>Head</strong> – $5</li>
+        <li><strong>Halfbody</strong> – $7</li>
+        <li><strong>Fullbody</strong> – $10</li>
+      </ul>
+      <p>Base price +</p>
+      <ul class="extras-list">
+        <li>👥 <strong>+80%</strong> per extra character</li>
+        <li>🖼️ <strong>Background</strong> – $0–$9</li>
+        <li>🔞 <strong>NSFW</strong> – +20% (mild) / +40% (explicit)</li>
+        <li>⚡ <strong>Express</strong> – +50%</li>
+        <li>💼 <strong>Commercial</strong> – +100%</li>
+      </ul>
+      <p class="timing">Average waiting time – <strong>1 week</strong>; Express – <strong>1 day</strong></p>
+    </section>
 
-  <section id="calculator">
-    <h2>Price Calculator</h2>
-    <form>
-      <label>
-        Choose artwork type:
-        <select id="type">
-          <option value="5">Head ($5)</option>
-          <option value="7">Halfbody ($7)</option>
-          <option value="10">Fullbody ($10)</option>
-        </select>
-      </label>
+    <section id="calculator" class="calculator animate-fade-in">
+      <h2>Price Calculator</h2>
+      <form>
+        <label>
+          Choose artwork type:
+          <select id="type">
+            <option value="5">Head ($5)</option>
+            <option value="7">Halfbody ($7)</option>
+            <option value="10">Fullbody ($10)</option>
+          </select>
+        </label>
 
-      <label>
-        Extra characters:
-        <input type="number" id="extraChars" value="0" min="0">
-      </label>
+        <label>
+          Extra characters:
+          <input type="number" id="extraChars" value="0" min="0">
+        </label>
 
-      <label>
-        Background price ($0–9):
-        <input type="number" id="bgPrice" value="0" min="0" max="9">
-      </label>
+        <label>
+          Background price ($0–9):
+          <input type="number" id="bgPrice" value="0" min="0" max="9">
+        </label>
 
-      <label>
-        NSFW level:
-        <select id="nsfw">
-          <option value="0">None</option>
-          <option value="0.2">Mild (+20%)</option>
-          <option value="0.4">Explicit (+40%)</option>
-        </select>
-      </label>
+        <label>
+          NSFW level:
+          <select id="nsfw">
+            <option value="0">None</option>
+            <option value="0.2">Mild (+20%)</option>
+            <option value="0.4">Explicit (+40%)</option>
+          </select>
+        </label>
 
-      <label>
-        <input type="checkbox" id="express">
-        Express (+50%)
-      </label>
+        <label class="checkbox">
+          <input type="checkbox" id="express">
+          Express (+50%)
+        </label>
 
-      <label>
-        <input type="checkbox" id="commercial">
-        Commercial use (+100%)
-      </label>
+        <label class="checkbox">
+          <input type="checkbox" id="commercial">
+          Commercial use (+100%)
+        </label>
 
-      <div class="result">
-        Total: <span id="price">$0.00</span>
-      </div>
-    </form>
-  </section>
+        <div class="result">
+          Total: <span id="price">$0.00</span>
+        </div>
+      </form>
+    </section>
+  </main>
 
-  <section id="gallery">
+  <section id="gallery" class="gallery animate-fade-in">
     <h2>Gallery</h2>
     <div class="gallery-grid">
       <img src="images/art1.jpg" alt="Art 1" class="gallery-item">
