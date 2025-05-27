@@ -1,4 +1,10 @@
-// script.js
+<!-- script.js -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- script.js -->
+<script>
 function calc() {
   const basePrices = { head: 5, halfbody: 7, fullbody: 9 };
   const type = document.getElementById('type').value;
@@ -10,16 +16,17 @@ function calc() {
   let express = document.getElementById('express').checked;
   let commercial = document.getElementById('commercial').checked;
 
-  let pricePerArt = basePrice;
-  if (characters > 1) pricePerArt += basePrice * 0.8 * (characters - 1);
-  pricePerArt += basePrice * nsfw;
-  pricePerArt += bg;
-  if (express) pricePerArt += basePrice * 0.5;
-  if (commercial) pricePerArt += basePrice * 1.0;
+  // Calculate base additions
+  let price = basePrice;
+  if (characters > 1) price += basePrice * 0.8 * (characters - 1);
+  price += bg;
+  if (express) price += basePrice * 0.5;
+  if (commercial) price += basePrice * 1.0;
 
-  // Всегда один арт, без цикла
-  let total = Math.round(pricePerArt * 100) / 100;
+  // Apply NSFW percentage to the resulting price
+  if (nsfw > 0) price = price * (1 + nsfw);
 
+  let total = Math.round(price * 100) / 100;
   document.getElementById('total').textContent = '$' + total;
 
   const timeDiv = document.getElementById('time');
@@ -30,7 +37,6 @@ function calc() {
   }
 }
 
-// Оставляем только нужные поля
 ['type', 'characters', 'bg', 'nsfw', 'express', 'commercial'].forEach(id => {
   const el = document.getElementById(id);
   el.addEventListener('input', calc);
@@ -39,6 +45,7 @@ function calc() {
 
 calc();
 
-// Tooltip and lightbox logic остаётся без изменений
+// Tooltip and lightbox logic remains unchanged
 const tooltip = document.getElementById('tooltip');
-// ... остальной код тултипов и lightbox ...
+// ... rest of tooltip/lightbox code ...
+</script>
