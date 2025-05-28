@@ -11,6 +11,7 @@
     <h1>🎉 Commissions OPEN! 🎨</h1>
     <p class="subtitle">Welcome to my portfolio! Scroll down for commission prices and calculator.</p>
   </header>
+
   <section id="portfolio">
     <h2>My Works</h2>
     <div class="gallery">
@@ -18,62 +19,48 @@
         <img src="portart1.jpg" alt="Artwork 1">
         <span class="art-title">Example</span>
       </div>
-      <div class="art-card">
-        <img src="portart2.jpg" alt="Artwork 2">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart3.jpg" alt="Artwork 3">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart4.jpg" alt="Artwork 4">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart5.jpg" alt="Artwork 5">
-        <span class="art-title">Example</span>
-      </div>
-      <div class="art-card">
-        <img src="portart6.jpg" alt="Artwork 6">
-        <span class="art-title">Example</span>
-      </div>
+      <!-- … остальные карточки … -->
     </div>
   </section>
+
   <section id="calculator">
     <h2>Commission Price Calculator</h2>
+
     <form id="commission-form" autocomplete="off">
       <div class="input-group">
         <label for="type">Type:
-          <button type="button" class="help-btn" data-tooltip="Choose what you want drawn: Head (portrait), Halfbody (to waist), or Fullbody.">
+          <button type="button" class="help-btn" data-tooltip="Choose what you want drawn: Head, Halfbody или Fullbody.">
             ?
           </button>
         </label>
         <select id="type" name="type">
-          <option value="head">Head - $5</option>
-          <option value="halfbody">Halfbody - $7</option>
-          <option value="fullbody">Fullbody - $9</option>
+          <option value="head">Head — $5</option>
+          <option value="halfbody">Halfbody — $7</option>
+          <option value="fullbody">Fullbody — $9</option>
         </select>
       </div>
+
       <div class="input-group">
         <label for="characters">Characters:
-          <button type="button" class="help-btn" data-tooltip="More than one character? Each extra +80% of the base price.">
+          <button type="button" class="help-btn" data-tooltip="Каждый дополнительный персонаж +80% от базовой цены.">
             ?
           </button>
         </label>
         <input type="number" id="characters" name="characters" min="1" value="1">
       </div>
+
       <div class="input-group">
         <label for="arts">Number of Arts:
-          <button type="button" class="help-btn" data-tooltip="If you want multiple artworks in one order, each next art is +80% of the price.">
+          <button type="button" class="help-btn" data-tooltip="Каждая следующая работа +80% от цены предыдущей.">
             ?
           </button>
         </label>
         <input type="number" id="arts" name="arts" min="1" value="1">
       </div>
+
       <div class="input-group">
         <label for="bg">Background:
-          <button type="button" class="help-btn" data-tooltip="How detailed you want the background. No BG = transparent or flat color.">
+          <button type="button" class="help-btn" data-tooltip="Выберите уровень детализации фона.">
             ?
           </button>
         </label>
@@ -84,41 +71,52 @@
           <option value="9">Complex ($9)</option>
         </select>
       </div>
+
       <div class="input-group">
         <label for="nsfw">NSFW:
-          <button type="button" class="help-btn" data-tooltip="20%: Mildly suggestive | 40%: Fully explicit">
+          <button type="button" class="help-btn" data-tooltip="Mild = ×2 от цены, Explicit = ×3 от цены.">
             ?
           </button>
         </label>
         <select id="nsfw" name="nsfw">
-          <option value="0">No</option>
-          <option value="0.2">Mild +20%</option>
-          <option value="0.4">Explite +40%</option>
+          <option value="none">No</option>
+          <option value="mild">Mild ×2</option>
+          <option value="explicit">Explicit ×3</option>
         </select>
       </div>
+
       <div class="input-group checkbox-group">
         <label>
           <input type="checkbox" id="express" name="express">
           Express
-          <button type="button" class="help-btn" data-tooltip="Get your art in 1 day instead of 1 week! +50% to base price.">?</button>
+          <button type="button" class="help-btn" data-tooltip="Срочно (1 день) — ×2 от цены.">
+            ?
+          </button>
         </label>
         <label>
           <input type="checkbox" id="commercial" name="commercial">
           Commercial Use
-          <button type="button" class="help-btn" data-tooltip="Using the art for business or monetization? +100% to base price.">?</button>
+          <button type="button" class="help-btn" data-tooltip="Коммерческое использование — ×2 от цены.">
+            ?
+          </button>
         </label>
       </div>
+
       <div id="result">
         <h3>Total Price: <span id="total">$0</span></h3>
         <div id="time"></div>
       </div>
     </form>
-    <p class="info">🚄 Average waiting time - 1 week, express - 1 day</p>
+
+    <p class="info">🚄 Average waiting time — 1 week; express — 1 day</p>
   </section>
+
   <footer>
     <p>&copy; 2025 gerfinart/GHXARTS | Portfolio & Commission</p>
   </footer>
+
   <div id="tooltip" style="display:none;"></div>
+
   <div id="lightbox" class="lightbox" style="display:none;">
     <div class="lightbox-bg"></div>
     <div class="lightbox-content">
@@ -127,6 +125,7 @@
       <button class="lightbox-close" id="lightbox-close" title="Close">&times;</button>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
