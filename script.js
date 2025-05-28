@@ -5,31 +5,29 @@ function calc() {
   let characters = parseInt(document.getElementById('characters').value) || 1;
   let arts = parseInt(document.getElementById('arts').value) || 1;
   let bg = parseFloat(document.getElementById('bg').value) || 0;
-  let nsfw = parseFloat(document.getElementById('nsfw').value) || 0;
+  let nsfw = parseInt(document.getElementById('nsfw').value) || 0;
   let express = document.getElementById('express').checked;
   let commercial = document.getElementById('commercial').checked;
 
-  // Шаг 1: базовая цена за арт
+  // 1. Рассчитываем цену одного арта
   let pricePerArt = basePrice;
-
-  // Шаг 2: доп. персонажи
   if (characters > 1) {
     pricePerArt += basePrice * 0.8 * (characters - 1);
   }
-
-  // Шаг 3: фон
   pricePerArt += bg;
 
-  // Шаг 4: считаем цену всех артов (первый - 100%, остальные - по 80%)
+  // 2. Общая сумма с учётом количества артов
   let total = pricePerArt;
   for (let i = 2; i <= arts; i++) {
     total += pricePerArt * 0.8;
   }
 
-  // Шаг 5: применяем надбавки к полной сумме
-  total *= (1 + nsfw);
+  // 3. Применяем множители
+  if (nsfw === 2) total *= 2;       // Mild NSFW
+  else if (nsfw === 3) total *= 3;  // Explicit NSFW
+
+  if (commercial) total *= 2;
   if (express) total *= 1.5;
-  if (commercial) total *= 2.0;
 
   total = Math.round(total * 100) / 100;
   document.getElementById('total').textContent = '$' + total;
