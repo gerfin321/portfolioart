@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gerfin • Art Portfolio & Commission Calculator</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8">
+  <title>Gerfin • Portfolio & Commissions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ===== sticky navigation ===== -->
+  <!----- TOP NAVIGATION ----->
   <nav class="navbar">
     <ul>
       <li><a href="#portfolio">Gallery</a></li>
@@ -18,50 +18,120 @@
     </ul>
   </nav>
 
-  <header>
-    <h1>🎉 Commissions OPEN! 🎨</h1>
-    <p class="subtitle">💸 From 1 to 31 June — huge discounts on every commission!</p>
+  <header class="hero">
+    <h1>🎉 Commissions&nbsp;OPEN!</h1>
+    <p>1 – 31 June — massive discounts on every piece</p>
   </header>
 
-  <!-- ===== gallery (стрелки убраны) ===== -->
+  <!----- GALLERY ----->
   <section id="portfolio">
     <h2>My Works</h2>
-
     <div class="gallery">
-      <!-- Наполнение то же самое: 18 примеров -->
-      <div class="art-card"><img src="portart1.jpg"  alt="Artwork 1"><span class="art-title">Example 1</span></div>
-      <div class="art-card"><img src="portart2.jpg"  alt="Artwork 2"><span class="art-title">Example 2</span></div>
-      …
-      <div class="art-card"><img src="portart18.jpg" alt="Artwork 18"><span class="art-title">Example 18</span></div>
+      <!-- 18 примеров / замените ссылками на реальные арты -->
+      <!-- просто дублируем 18 карточек-заглушек -->
+      <!-- ↓ карточка = обёртка + картинка + подпись -->
+      <!-- поставьте src на свои JPG/PNG; alt и span — подписи -->
+      <!-- BEGIN CARDS -->
+      <div class="card"><img src="portart1.jpg"  alt="Artwork 1"><span>Example 1</span></div>
+      <div class="card"><img src="portart2.jpg"  alt="Artwork 2"><span>Example 2</span></div>
+      <div class="card"><img src="portart3.jpg"  alt="Artwork 3"><span>Example 3</span></div>
+      <div class="card"><img src="portart4.jpg"  alt="Artwork 4"><span>Example 4</span></div>
+      <div class="card"><img src="portart5.jpg"  alt="Artwork 5"><span>Example 5</span></div>
+      <div class="card"><img src="portart6.jpg"  alt="Artwork 6"><span>Example 6</span></div>
+      <div class="card"><img src="portart7.jpg"  alt="Artwork 7"><span>Example 7</span></div>
+      <div class="card"><img src="portart8.jpg"  alt="Artwork 8"><span>Example 8</span></div>
+      <div class="card"><img src="portart9.jpg"  alt="Artwork 9"><span>Example 9</span></div>
+      <div class="card"><img src="portart10.jpg" alt="Artwork 10"><span>Example 10</span></div>
+      <div class="card"><img src="portart11.jpg" alt="Artwork 11"><span>Example 11</span></div>
+      <div class="card"><img src="portart12.jpg" alt="Artwork 12"><span>Example 12</span></div>
+      <div class="card"><img src="portart13.jpg" alt="Artwork 13"><span>Example 13</span></div>
+      <div class="card"><img src="portart14.jpg" alt="Artwork 14"><span>Example 14</span></div>
+      <div class="card"><img src="portart15.jpg" alt="Artwork 15"><span>Example 15</span></div>
+      <div class="card"><img src="portart16.jpg" alt="Artwork 16"><span>Example 16</span></div>
+      <div class="card"><img src="portart17.jpg" alt="Artwork 17"><span>Example 17</span></div>
+      <div class="card"><img src="portart18.jpg" alt="Artwork 18"><span>Example 18</span></div>
+      <!-- END CARDS -->
     </div>
   </section>
 
-  <!-- ===== resized price-list ===== -->
+  <!----- PRICE LIST BANNER ----->
   <section id="pricelist">
-    <img src="pricelist.jpg" alt="Full price-list with June discounts">
+    <img src="pricelist.jpg" alt="Current prices with June discounts">
   </section>
 
-  <!-- ===== calculator ===== -->
+  <!----- COMMISSION CALCULATOR ----->
   <section id="calculator">
-    <h2>Commission Price Calculator</h2>
-    <!-- Содержимое формы неизменно -->
-    …
+    <h2>Commission&nbsp;Calculator</h2>
+
+    <form id="form">
+      <div class="row">
+        <label for="style">Art&nbsp;Style</label>
+        <select id="style">
+          <option value="sketch">Sketch</option>
+          <option value="full">Full artwork</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="type">Type</label>
+        <select id="type">
+          <option value="head">Head</option>
+          <option value="halfbody">Half-body</option>
+          <option value="fullbody">Full-body</option>
+        </select>
+        <div id="basePrice" class="price-preview"></div>
+      </div>
+
+      <div class="row">
+        <label for="chars">Characters</label>
+        <input type="number" id="chars" value="1" min="1">
+      </div>
+
+      <div class="row">
+        <label for="arts">Pieces</label>
+        <input type="number" id="arts" value="1" min="1">
+      </div>
+
+      <div class="row">
+        <label for="bg">Background</label>
+        <select id="bg">
+          <option value="0">None (0 $)</option>
+          <option value="1">Simple (1 $)</option>
+          <option value="3">Detailed (3 $)</option>
+          <option value="5">Complex (5 $)</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="nsfw">NSFW</label>
+        <select id="nsfw">
+          <option value="1">No</option>
+          <option value="1.25">Mild × 1.25</option>
+          <option value="1.5">Explicit × 1.5</option>
+        </select>
+      </div>
+
+      <div class="row checkbox">
+        <label><input type="checkbox" id="express"> Express × 1.5</label>
+        <label><input type="checkbox" id="commercial"> Commercial Use × 2</label>
+      </div>
+    </form>
+
+    <div id="result">
+      <h3>Total: <span id="total">$0</span></h3>
+      <small id="eta"></small>
+    </div>
   </section>
 
-  <!-- ===== socials & footer ===== -->
+  <!----- SOCIALS & FOOTER ----->
   <footer id="social">
-    <div class="social-links">
-      <a href="https://discord.gg/TPdnQQ95SM" target="_blank" rel="noopener">Discord</a>
-      <a href="https://x.com/ghxarts26540"      target="_blank" rel="noopener">Twitter/X</a>
+    <div class="links">
+      <a href="https://discord.gg/TPdnQQ95SM"  target="_blank" rel="noopener">Discord</a>
+      <a href="https://x.com/ghxarts26540"     target="_blank" rel="noopener">Twitter/X</a>
       <a href="https://www.deviantart.com/gerfin2138" target="_blank" rel="noopener">DeviantArt</a>
     </div>
-    <p>&copy; 2025&nbsp;GerfinArt&nbsp;|&nbsp;Portfolio&nbsp;&amp;&nbsp;Commission</p>
+    <p>&copy; 2025 Gerfin&nbsp;Art</p>
   </footer>
-
-  <!-- lightbox – как раньше -->
-  <div id="lightbox" class="lightbox" style="display:none;">
-    …
-  </div>
 
   <script src="script.js"></script>
 </body>
