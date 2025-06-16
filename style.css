@@ -383,4 +383,49 @@ textarea#request {
   transition:color var(--transition);
 }
 .social-links a:hover{color:var(--primary);text-decoration:underline;}
+/* ===== navigation bar ===== */
+.navbar{
+  position:sticky;
+  top:0;
+  width:100%;
+  background:rgba(35,41,49,.95);               /* полупрозрачный фон */
+  backdrop-filter:blur(6px);
+  z-index:999;
+  box-shadow:0 2px 4px rgba(0,0,0,.4);
+}
+.navbar ul{
+  display:flex;
+  justify-content:center;
+  gap:2.4rem;
+  margin:0;
+  padding:.6rem 1rem;
+  list-style:none;
+}
+.navbar a{
+  color:var(--white);
+  font-weight:600;
+  text-decoration:none;
+  transition:color var(--transition);
+}
+.navbar a:hover{color:var(--accent);}
+
+/* ===== gallery (без стрелок) ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;
+}
+
+/* ===== price-list banner, уменьшен ===== */
+#pricelist img{
+  width:90%;          /* чуть меньше ширины секции */
+  height:auto;
+  max-width:800px;    /* «жёсткий» лимит по ширине */
+  max-height:70vh;    /* и по высоте окна */
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  object-fit:contain;
+  margin:2rem auto 3rem auto; /* центрирование */
+}
+
 
