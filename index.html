@@ -3,116 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Art Portfolio & Commission Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Gerfin • Art Portfolio & Commission Calculator</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
     <h1>🎉 Commissions OPEN! 🎨</h1>
-    <p class="subtitle">Welcome to my portfolio! Scroll down for commission prices and calculator.</p>
+    <p class="subtitle">💸 From 1 to 31 June — huge discounts on every commission!</p>
   </header>
 
+  <!-- ====== gallery slider ====== -->
   <section id="portfolio">
     <h2>My Works</h2>
-    <div class="gallery">
-      <div class="art-card">
-        <img src="portart1.jpg" alt="Artwork 1">
-        <span class="art-title">Example 1</span>
+
+    <div class="gallery-wrapper">
+      <button class="gallery-arrow prev" title="Previous set">&#10094;</button>
+
+      <div class="gallery">
+        <!-- 18 примеров: первые 6 показываются, остальные спрячутся до перелистывания -->
+        <!-- page 0 -->
+        <div class="art-card"><img src="portart1.jpg"  alt="Artwork 1"><span class="art-title">Example 1</span></div>
+        <div class="art-card"><img src="portart2.jpg"  alt="Artwork 2"><span class="art-title">Example 2</span></div>
+        <div class="art-card"><img src="portart3.jpg"  alt="Artwork 3"><span class="art-title">Example 3</span></div>
+        <div class="art-card"><img src="portart4.jpg"  alt="Artwork 4"><span class="art-title">Example 4</span></div>
+        <div class="art-card"><img src="portart5.jpg"  alt="Artwork 5"><span class="art-title">Example 5</span></div>
+        <div class="art-card"><img src="portart6.jpg"  alt="Artwork 6"><span class="art-title">Example 6</span></div>
+        <!-- page 1 -->
+        <div class="art-card"><img src="portart7.jpg"  alt="Artwork 7"><span class="art-title">Example 7</span></div>
+        <div class="art-card"><img src="portart8.jpg"  alt="Artwork 8"><span class="art-title">Example 8</span></div>
+        <div class="art-card"><img src="portart9.jpg"  alt="Artwork 9"><span class="art-title">Example 9</span></div>
+        <div class="art-card"><img src="portart10.jpg" alt="Artwork 10"><span class="art-title">Example 10</span></div>
+        <div class="art-card"><img src="portart11.jpg" alt="Artwork 11"><span class="art-title">Example 11</span></div>
+        <div class="art-card"><img src="portart12.jpg" alt="Artwork 12"><span class="art-title">Example 12</span></div>
+        <!-- page 2 -->
+        <div class="art-card"><img src="portart13.jpg" alt="Artwork 13"><span class="art-title">Example 13</span></div>
+        <div class="art-card"><img src="portart14.jpg" alt="Artwork 14"><span class="art-title">Example 14</span></div>
+        <div class="art-card"><img src="portart15.jpg" alt="Artwork 15"><span class="art-title">Example 15</span></div>
+        <div class="art-card"><img src="portart16.jpg" alt="Artwork 16"><span class="art-title">Example 16</span></div>
+        <div class="art-card"><img src="portart17.jpg" alt="Artwork 17"><span class="art-title">Example 17</span></div>
+        <div class="art-card"><img src="portart18.jpg" alt="Artwork 18"><span class="art-title">Example 18</span></div>
       </div>
-      <div class="art-card">
-        <img src="portart2.jpg" alt="Artwork 2">
-        <span class="art-title">Example 2</span>
-      </div>
-      <div class="art-card">
-        <img src="portart3.jpg" alt="Artwork 3">
-        <span class="art-title">Example 3</span>
-      </div>
-      <div class="art-card">
-        <img src="portart4.jpg" alt="Artwork 4">
-        <span class="art-title">Example 4</span>
-      </div>
-      <div class="art-card">
-        <img src="portart5.jpg" alt="Artwork 5">
-        <span class="art-title">Example 5</span>
-      </div>
-      <div class="art-card">
-        <img src="portart6.jpg" alt="Artwork 6">
-        <span class="art-title">Example 6</span>
-      </div>
+
+      <button class="gallery-arrow next" title="Next set">&#10095;</button>
     </div>
   </section>
 
+  <!-- ====== big pricelist banner ====== -->
+  <section id="pricelist">
+    <img src="pricelist.jpg" alt="Full price-list with June discounts">
+  </section>
+
+  <!-- ====== calculator ====== -->
   <section id="calculator">
     <h2>Commission Price Calculator</h2>
     <form id="commission-form" autocomplete="off">
+      <!-- art style -->
       <div class="input-group">
-        <label for="type">Type:
-          <button type="button" class="help-btn"
-            data-tooltip="Choose what you want drawn: Head (portrait), Halfbody (to waist) or Fullbody.">?</button>
-        </label>
-        <select id="type" name="type">
-          <option value="head">Head — $5</option>
-          <option value="halfbody">Halfbody — $7</option>
-          <option value="fullbody">Fullbody — $9</option>
+        <label for="artstyle">Art Style:</label>
+        <select id="artstyle" name="artstyle">
+          <option value="sketch">Sketch</option>
+          <option value="full">Full artwork</option>
         </select>
       </div>
 
+      <!-- type -->
       <div class="input-group">
-        <label for="characters">Characters:
-          <button type="button" class="help-btn"
-            data-tooltip="More than one character? Each additional +80% of base price.">?</button>
-        </label>
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+          <option value="head">Head</option>
+          <option value="halfbody">Half-body</option>
+          <option value="fullbody">Full-body</option>
+        </select>
+        <!-- dynamic price preview -->
+        <div id="price-display" class="price-display"></div>
+      </div>
+
+      <!-- characters -->
+      <div class="input-group">
+        <label for="characters">Characters:</label>
         <input type="number" id="characters" name="characters" min="1" value="1">
       </div>
 
+      <!-- artworks count -->
       <div class="input-group">
-        <label for="arts">Number of Arts:
-          <button type="button" class="help-btn"
-            data-tooltip="Multiple artworks in one order? Each next +80% of previous price.">?</button>
-        </label>
+        <label for="arts">Number of Arts:</label>
         <input type="number" id="arts" name="arts" min="1" value="1">
       </div>
 
+      <!-- background -->
       <div class="input-group">
-        <label for="bg">Background:
-          <button type="button" class="help-btn"
-            data-tooltip="Select background detail: none (flat/transparent), simple, detailed or complex.">?</button>
-        </label>
+        <label for="bg">Background:</label>
         <select id="bg" name="bg">
           <option value="0">None ($0)</option>
-          <option value="3">Simple ($3)</option>
-          <option value="5">Detailed ($5)</option>
-          <option value="9">Complex ($9)</option>
+          <option value="1">Simple ($1)</option>
+          <option value="3">Detailed ($3)</option>
+          <option value="5">Complex ($5)</option>
         </select>
       </div>
 
+      <!-- nsfw -->
       <div class="input-group">
-        <label for="nsfw">NSFW:
-          <button type="button" class="help-btn"
-            data-tooltip="Mild = ×1.5× price, Explicit = ×2× price.">?</button>
-        </label>
+        <label for="nsfw">NSFW:</label>
         <select id="nsfw" name="nsfw">
-          <option value="none">No</option>
-          <option value="mild">Mild ×1.5</option>
-          <option value="explicit">Explicit ×2</option>
+          <option value="1">No</option>
+          <option value="1.25">Mild ×1.25</option>
+          <option value="1.5">Explicit ×1.5</option>
         </select>
       </div>
 
+      <!-- checkboxes -->
       <div class="input-group checkbox-group">
         <label>
           <input type="checkbox" id="express" name="express">
-          Express
-          <button type="button" class="help-btn"
-            data-tooltip="Express delivery (1 day) — ×2× price.">?</button>
+          Express ×1.5
         </label>
         <label>
           <input type="checkbox" id="commercial" name="commercial">
-          Commercial Use
-          <button type="button" class="help-btn"
-            data-tooltip="Commercial license — ×2× price.">?</button>
+          Commercial Use ×2
         </label>
       </div>
 
+      <!-- total -->
       <div id="result">
         <h3>Total Price: <span id="total">$0</span></h3>
         <div id="time"></div>
@@ -121,12 +132,17 @@
     <p class="info">🚄 Average waiting time — 1 week; express — 1 day</p>
   </section>
 
+  <!-- ====== social links & footer ====== -->
   <footer>
-    <p>&copy; 2025 GerfinArt | Portfolio & Commission</p>
+    <div class="social-links">
+      <a href="https://discord.gg/TPdnQQ95SM" target="_blank" rel="noopener">Discord</a>
+      <a href="https://x.com/ghxarts26540"      target="_blank" rel="noopener">Twitter/X</a>
+      <a href="https://www.deviantart.com/gerfin2138" target="_blank" rel="noopener">DeviantArt</a>
+    </div>
+    <p>&copy; 2025 GerfinArt&nbsp;|&nbsp;Portfolio&nbsp;&amp;&nbsp;Commission</p>
   </footer>
 
-  <div id="tooltip" style="display:none;"></div>
-
+  <!-- ===== lightbox markup stays прежним ===== -->
   <div id="lightbox" class="lightbox" style="display:none;">
     <div class="lightbox-bg"></div>
     <div class="lightbox-content">
